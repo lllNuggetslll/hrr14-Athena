@@ -9,13 +9,17 @@
 </head>
 <body>
 
-<!-- UNCOMPILED JS -->
 <!--(if target dev)><!-->
+<!-- UNCONCATENATED JS LIBS -->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+<!-- UNCOMPILED APP JS FILES -->
 <script src="src/app/app.js"></script>
 <!--<!(endif)-->
 
-<!-- COMPILED JS -->
 <!--(if target dist)><!-->
+<script src="dist/js/libs.min.js"></script>
 <script src="dist/js/app.min.js"></script>
 <!--<!(endif)-->
 </body>

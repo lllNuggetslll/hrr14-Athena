@@ -1,7 +1,10 @@
 module.exports = function(grunt) {
   'use strict';
 
-  var jsLibs = [];
+  var jsLibs = [
+    'bower_components/angular/angular.min.js', 
+    'bower_components/angular-ui-router/release/angular-ui-router.js'
+  ];
   var jsApp = ['public/src/app/**/*.js'];
 
   grunt.initConfig({
