@@ -1,12 +1,12 @@
-# Project Name
+# Pair-aoke
 
-> Pithy project description
+> Find out where your friends or enemies are planning to show their vocal chops. Show up and either provide some harmonization or devastate them with your superior vocal acrobatics. Sign in to create new Pair-aoke collabo or battle-style pop-ups.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Emily Ashley
+  - __Scrum Master__: Ben Janes
+  - __Development Team Members__: Terry Capan, David Nguyen
 
 ## Table of Contents
 
