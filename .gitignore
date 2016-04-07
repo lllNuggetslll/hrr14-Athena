@@ -1,4 +1,5 @@
 .DS_Store
+**/.DS_Store
 
 # modules and components
 node_modules/
