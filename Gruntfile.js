@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   'use strict';
 
   var jsLibs = [];
-  var jsApp = [];
+  var jsApp = ['public/src/app/**/*.js'];
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
