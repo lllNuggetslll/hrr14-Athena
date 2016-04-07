@@ -1,0 +1,21 @@
+{
+  "name": "hrr14-athena",
+  "description": "karaoke with maps",
+  "main": "index.js",
+  "authors": [
+    "David Nguyen",
+    "Ben Janes",
+    "Emily Ashley",
+    "Terry Capan"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/emilyashley/hrr14-Athena",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
