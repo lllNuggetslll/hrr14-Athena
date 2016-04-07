@@ -1,0 +1,22 @@
+{
+  "name": "hrr14-athena",
+  "version": "1.0.0",
+  "description": "karaoke with maps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrr14-Athena/hrr14-Athena.git"
+  },
+  "author": "David Nguyen, Ben Janes, Emily Ashley, Terry Capan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrr14-Athena/hrr14-Athena/issues"
+  },
+  "homepage": "https://github.com/hrr14-Athena/hrr14-Athena#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
