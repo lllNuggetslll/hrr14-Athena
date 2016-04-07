@@ -1,0 +1,9 @@
+.DS_Store
+
+# modules and components
+node_modules/
+bower_components/
+
+# compiled code
+public/dist
+public/index.html
