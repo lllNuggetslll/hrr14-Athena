@@ -5,6 +5,7 @@ angular.module('karaoke', [
   'karaoke.services',
   'karaoke.nav',
   'karaoke.home',
+  'karaoke.auth',
   'ui.router'
 ])
 
@@ -16,5 +17,15 @@ angular.module('karaoke', [
       url: '/',
       templateUrl: 'src/app/components/home/home.html',
       controller: 'homeCtrl'
+    })
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'src/app/components/auth/signup.html',
+      controller: 'authCtrl'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'src/app/components/auth/login.html',
+      controller: 'authCtrl'
     });
 });
