@@ -2,7 +2,7 @@ angular.module('karaoke.services', [])
 
 .factory('mapFactory', function() {
 
-  var string = 'make a map';
+  var makeMap = function() {};
 
-  return string;
+  return makeMap;
 });
