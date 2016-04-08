@@ -8,16 +8,16 @@
   <link rel="stylesheet" type="text/css" href="dist/styles/style.css">
 </head>
 <body>
-  <header>
-    <h1 class="main-title"><a href="#/">KARAOKE APP</a></h1>
-    <nav ng-controller="navCtrl">
-      <a href="#" ng-click="toggleClass()">X</a>
-      <ul ng-class="{'menu-up' : droppedDown, 'menu-down' : !droppedDown}">
+  <header ng-controller="navCtrl">
+    <nav ng-class="{'menu-up' : !droppedDown, 'menu-down' : droppedDown}">
+      <ul>
         <li><a href="#">Log In</a></li>
         <li><a href="#">Sign Up</a></li>
         <li><a href="#">Find an Event</a></li>
       </ul>
     </nav>
+    <h1 class="main-title"><a href="#/">KARAOKE APP</a></h1>
+    <a href="#" ng-click="toggleClass()" class="menu-trigger">X</a>
   </header>
 
   <main>
