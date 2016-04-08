@@ -6,6 +6,8 @@ angular.module('karaoke', [
   'karaoke.nav',
   'karaoke.home',
   'karaoke.auth',
+  'karaoke.addevent',
+  'karaoke.event',
   'ui.router'
 ])
 
@@ -27,5 +29,16 @@ angular.module('karaoke', [
       url: '/login',
       templateUrl: 'src/app/components/auth/login.html',
       controller: 'authCtrl'
+    })
+    .state('event', {
+      url: '/event/:eventID',
+      templateUrl: 'src/app/components/event/event.html',
+      controller: 'eventCtrl'
+    })
+    .state('addevent', {
+      url: '/addevent',
+      templateUrl: 'src/app/components/addevent/addevent.html',
+      controller: 'addEventCtrl',
+      authenticate: true
     });
 });

@@ -1,6 +1,6 @@
 angular.module('karaoke.auth', [])
 
-.controller('authCtrl', function($scope, mapFactory) {
+.controller('authCtrl', function($scope) {
 
   $scope.user = {};
 
