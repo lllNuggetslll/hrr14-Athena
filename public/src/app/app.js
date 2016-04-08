@@ -11,7 +11,7 @@ angular.module('karaoke', [
   'ui.router'
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
@@ -41,4 +41,12 @@ angular.module('karaoke', [
       controller: 'addEventCtrl',
       authenticate: true
     });
+    $httpProvider.interceptors.push('AttachTokens');
+})
+.run(function ($rootScope, $location, authFactory) {
+  $rootScope.$on('$stateChangeStart', function (evt, next, nextParams) {
+    if (next && next.authenticate && !authFactory.isAuth()) {
+      $location.path('/login');
+    }
+  });
 });
