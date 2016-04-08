@@ -11,13 +11,13 @@
   <header ng-controller="navCtrl">
     <nav ng-class="{'menu-up' : !droppedDown, 'menu-down' : droppedDown}">
       <ul>
-        <li><a href="#">Log In</a></li>
-        <li><a href="#">Sign Up</a></li>
+        <li><a ui-sref="login">Log In</a></li>
+        <li><a ui-sref="signup">Sign Up</a></li>
         <li><a href="#">Find an Event</a></li>
       </ul>
     </nav>
     <h1 class="main-title"><a href="#/">KARAOKE APP</a></h1>
-    <a href="#" ng-click="toggleClass()" class="menu-trigger">X</a>
+    <div ng-click="toggleClass()" class="menu-trigger">X</div>
   </header>
 
   <main>
@@ -29,6 +29,7 @@
   <script src="src/app/services/mapFactory.js"></script>
   <script src="src/app/components/navigation/nav.js"></script>
   <script src="src/app/components/home/home.js"></script>
+  <script src="src/app/components/auth/auth.js"></script>
   <script src="src/app/app.js"></script>
   <!--<!(endif)-->
 
