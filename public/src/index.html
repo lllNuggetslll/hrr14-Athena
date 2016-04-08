@@ -2,21 +2,42 @@
 <!-- to be compiled into ../ -->
 <!-- one version for dev, one for dist -->
 <!DOCTYPE html>
-<html>
+<html ng-app="karaoke">
 <head>
   <title></title>
   <link rel="stylesheet" type="text/css" href="dist/styles/style.css">
 </head>
 <body>
+  <header ng-controller="navCtrl">
+    <nav ng-class="{'menu-up' : !droppedDown, 'menu-down' : droppedDown}">
+      <ul>
+        <li><a ui-sref="login">Log In</a></li>
+        <li><a ui-sref="signup">Sign Up</a></li>
+        <li><a ui-sref="addevent">Add An Event</a></li>
+      </ul>
+    </nav>
+    <h1 class="main-title"><a href="#/">KARAOKE APP</a></h1>
+    <div ng-click="toggleClass()" class="menu-trigger">X</div>
+  </header>
 
-<!-- UNCOMPILED JS -->
-<!--(if target dev)><!-->
-<script src="src/app/app.js"></script>
-<!--<!(endif)-->
+  <main>
+    <div ui-view></div>
+  </main>
 
-<!-- COMPILED JS -->
-<!--(if target dist)><!-->
-<script src="dist/js/app.min.js"></script>
-<!--<!(endif)-->
+  <script src="dist/js/libs.min.js"></script>
+  <!--(if target dev)><!-->
+  <script src="src/app/services/mapFactory.js"></script>
+  <script src="src/app/services/locationFactory.js"></script>
+  <script src="src/app/components/navigation/nav.js"></script>
+  <script src="src/app/components/home/home.js"></script>
+  <script src="src/app/components/auth/auth.js"></script>
+  <script src="src/app/components/addevent/addevent.js"></script>
+  <script src="src/app/components/event/event.js"></script>
+  <script src="src/app/app.js"></script>
+  <!--<!(endif)-->
+
+  <!--(if target dist)><!-->
+  <script src="dist/js/app.min.js"></script>
+  <!--<!(endif)-->
 </body>
 </html>

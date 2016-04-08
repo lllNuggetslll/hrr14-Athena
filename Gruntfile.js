@@ -1,7 +1,10 @@
 module.exports = function(grunt) {
   'use strict';
 
-  var jsLibs = [];
+  var jsLibs = [
+    'bower_components/angular/angular.min.js', 
+    'bower_components/angular-ui-router/release/angular-ui-router.js'
+  ];
   var jsApp = ['public/src/app/**/*.js'];
 
   grunt.initConfig({
@@ -13,7 +16,7 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: {
-          'public/dist/styles/style.css' : 'public/src/assets/sass/main.sass'
+          'public/dist/styles/style.css' : 'public/src/assets/sass/style.sass'
         }
       }
     },
@@ -81,6 +84,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-targethtml');
 
-  grunt.registerTask('default', ['targethtml:dev', 'sass', 'jshint', 'watch']);
+  grunt.registerTask('default', ['uglify', 'targethtml:dev', 'sass', 'jshint', 'watch']);
   grunt.registerTask('build', ['targethtml:dist', 'sass', 'autoprefixer', 'uglify']);
 };
