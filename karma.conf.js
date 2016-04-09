@@ -23,6 +23,7 @@ module.exports = function(config) {
       'public/src/app/app.js',
 
       // ADD SPEC FILES HERE
+      'tests/client/stateSpec.js',
       'tests/client/navCtrlSpec.js'
     ],
 
