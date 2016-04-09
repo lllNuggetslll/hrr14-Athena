@@ -20,7 +20,7 @@ angular.module('karaoke.auth', [])
 
   $scope.login = function(isValid) {
     if (isValid) {
-      Auth.signin($scope.user)
+      authFactory.login($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.karaoke', token);
           //direct to where upon login? 
