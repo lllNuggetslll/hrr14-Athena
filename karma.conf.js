@@ -14,6 +14,7 @@ module.exports = function(config) {
       // app code
       'public/src/app/services/mapFactory.js',
       'public/src/app/services/locationFactory.js',
+      'public/src/app/services/authFactory.js',
       'public/src/app/components/navigation/nav.js',
       'public/src/app/components/home/home.js',
       'public/src/app/components/event/event.js',
@@ -22,6 +23,7 @@ module.exports = function(config) {
       'public/src/app/app.js',
 
       // ADD SPEC FILES HERE
+      'tests/client/stateSpec.js',
       'tests/client/navCtrlSpec.js'
     ],
 
