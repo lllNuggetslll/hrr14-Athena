@@ -74,6 +74,12 @@ module.exports = function(grunt) {
         files: 'public/src/index.html',
         tasks: ['targethtml:dev']
       }
+    },
+
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
     }
   });
 
@@ -83,7 +89,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-targethtml');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('default', ['uglify', 'targethtml:dev', 'sass', 'jshint', 'watch']);
   grunt.registerTask('build', ['targethtml:dist', 'sass', 'autoprefixer', 'uglify']);
+  grunt.registerTask('test', ['karma']);
 };
