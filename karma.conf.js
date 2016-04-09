@@ -24,6 +24,7 @@ module.exports = function(config) {
 
       // ADD SPEC FILES HERE
       'tests/client/stateSpec.js',
+      'tests/client/locationFactorySpec.js',
       'tests/client/navCtrlSpec.js'
     ],
 
