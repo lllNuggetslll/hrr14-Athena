@@ -31,7 +31,7 @@ angular.module('karaoke.services')
 
   var logout = function() {
     $window.localStorage.removeItem('com.karaoke');
-    $location.path('/login');
+    $location.path('/').replace();
   };
 
   return {
