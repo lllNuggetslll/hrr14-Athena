@@ -45,9 +45,7 @@ angular.module('karaoke', [
 })
 .run(function ($rootScope, $location, authFactory) {
   $rootScope.$on('$stateChangeStart', function (evt, next, nextParams) {
-    console.log(!authFactory.isAuth());
     if (next && next.authenticate && !authFactory.isAuth()) {
-      console.log('REDIRECT');
       $location.path('/login').replace();
     }
   });
