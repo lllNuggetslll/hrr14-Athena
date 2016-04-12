@@ -25,14 +25,32 @@ nav ul
   text-align: center
 
 .main-title
+  font-family: Wallpoet, sans-serif
   position: relative
   margin: 0
   padding: 0.8em 0
-  background: #fff
+  background-color: #fff
+
+.main-title a
+  text-decoration: none
+  color: inherit
 
 .menu-trigger
   position: absolute
+  width: 40px
   top: 5px
   right: 5px
   cursor: pointer
 
+@media all and (min-width: 500px)
+  nav
+    z-index: 10
+
+  .nav-item
+    display: inline-block
+
+  .main-title
+    background-color: transparent
+
+  .menu-trigger
+    display: none
