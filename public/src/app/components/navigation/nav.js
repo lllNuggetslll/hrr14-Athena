@@ -2,6 +2,7 @@ angular.module('karaoke.nav', [])
 
 .controller('navCtrl', function($scope, authFactory) {
   $scope.droppedDown = false;
+  $scope.loggedIn = authFactory.isAuth();
 
   $scope.toggleClass = function() {
     $scope.droppedDown = !$scope.droppedDown;
@@ -13,5 +14,6 @@ angular.module('karaoke.nav', [])
 
   $scope.$on('$locationChangeStart', function(next, current) {
     $scope.droppedDown = false;
+    $scope.loggedIn = authFactory.isAuth();
   });
 });
