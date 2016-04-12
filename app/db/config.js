@@ -1,16 +1,13 @@
 var BookShelf = require('bookshelf');
 var path = require('path');
+var connectionString = require('./connectionString.js');
 
 
 var db = Bookshelf.initialize({
   client: 'postgresql',
   connection: {
-    host: 'localhost',
-    port: '',
-    user: 'root',
-    password: '',
-    database: 'MapDB',
-    charset: 'utf8',
+    filename: connectionString,
+    charset: 'utf8'
   }
 });
 

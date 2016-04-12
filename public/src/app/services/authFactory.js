@@ -3,26 +3,26 @@ angular.module('karaoke.services')
 .factory('authFactory', function($http, $location, $window) {
   var login = function(user) {
     return $http({
-        method: 'POST',
-        url: '/api/users/login',
-        data: user
-      })
-      .then(function(resp) {
-        //back end funcionality needed for routes and DB
-        return resp.data.token;
-      });
+      method: 'POST',
+      url: '/api/users/login',
+      data: user
+    })
+    .then(function(resp) {
+      //back end funcionality needed for routes and DB
+      return resp.data.token;
+    });
   };
 
   var signup = function(user) {
     return $http({
-        method: 'POST',
-        url: '/api/users/signup',
-        data: user
-      })
-      .then(function(resp) {
-        //back end funcionality needed for routes and DB
-        return resp.data.token;
-      });
+      method: 'POST',
+      url: '/api/users/signup',
+      data: user
+    })
+    .then(function(resp) {
+      //back end funcionality needed for routes and DB
+      return resp.data.token;
+    });
   };
 
   var isAuth = function() {

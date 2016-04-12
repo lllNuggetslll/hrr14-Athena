@@ -9,7 +9,7 @@ angular.module('karaoke.auth', [])
       authFactory.signup($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.karaoke', token);
-          //direct to where upon signup? 
+          //direct to where upon signup?
           $location.path('/addEvent');
         })
         .catch(function (error) {
@@ -23,7 +23,7 @@ angular.module('karaoke.auth', [])
       authFactory.login($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.karaoke', token);
-          //direct to where upon login? 
+          //direct to where upon login?
           $location.path('/addEvent');
         })
         .catch(function (error) {

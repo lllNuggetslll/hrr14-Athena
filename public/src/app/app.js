@@ -41,7 +41,7 @@ angular.module('karaoke', [
       controller: 'addEventCtrl',
       authenticate: true
     });
-    $httpProvider.interceptors.push('AttachTokens');
+  $httpProvider.interceptors.push('AttachTokens');
 })
 .run(function ($rootScope, $location, authFactory) {
   $rootScope.$on('$stateChangeStart', function (evt, next, nextParams) {
