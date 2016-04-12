@@ -1,14 +1,11 @@
-var BookShelf = require('bookshelf');
+var Bookshelf = require('bookshelf');
 var path = require('path');
 var connectionString = require('./connectionString.js');
 
 
 var db = Bookshelf.initialize({
-  client: 'postgresql',
-  connection: {
-    filename: connectionString,
-    charset: 'utf8'
-  }
+  client: 'pg',
+  connection: connectionString
 });
 
 
