@@ -46,7 +46,7 @@ angular.module('karaoke', [
 .run(function ($rootScope, $location, authFactory) {
   $rootScope.$on('$stateChangeStart', function (evt, next, nextParams) {
     if (next && next.authenticate && !authFactory.isAuth()) {
-      $location.path('/login');
+      $location.path('/login').replace();
     }
   });
 });

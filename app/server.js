@@ -4,8 +4,8 @@ var parser = require('body-parser');
 
 var app = express();
 
-var userService = require('./services/userServices.js');
-var eventService = require('./services/userServices.js');
+var userService = require('./db/services/userServices.js');
+var eventService = require('./db/services/userServices.js');
 
 //modularize to middleware page? probably not necessary...
 app.use(morgan('dev'));
@@ -13,7 +13,7 @@ app.use(parser.json());
 app.use(express.static(__dirname + '/../public'));
 
 //modularized routes to routes.js page. too late to stop me.
-require('./config/routes.js')(app, express);
+require('./routes.js')(app, express);
 
 
 module.exports = app;

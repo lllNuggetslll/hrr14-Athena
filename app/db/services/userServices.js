@@ -1,5 +1,6 @@
 var db = require('../config.js');
 var User = require('../models/user.js');
+var Users = require('../collections/users.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
         if (!user) {
           res.redirect('/login');
         } else {
-          User.comparePassword(password, function(match) {
+          user.comparePassword(password, function(match) {
             if (match) {
               var token = jwt.encode(user, 'secret');
               res.json({token: token});

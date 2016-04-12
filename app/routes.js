@@ -1,6 +1,6 @@
-var userService = require('./services/userServices.js');
-var eventService = require('./services/eventServices.js');
-var helpers = require('./helper.js');
+var userService = require('./db/services/userServices.js');
+var eventService = require('./db/services/eventServices.js');
+var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
   app.post('/api/users/login', userService.login);
