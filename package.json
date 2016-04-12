@@ -18,6 +18,8 @@
   "homepage": "https://github.com/hrr14-Athena/hrr14-Athena#readme",
   "dependencies": {
     "bcrypt": "^0.8.5",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
     "bookshelf": "^0.9.4",
     "express": "^4.13.4",
@@ -30,9 +32,11 @@
     "jwt-simple": "^0.5.0",
     "knex": "^0.10.0",
     "morgan": "^1.7.0",
+    "node-gyp": "^3.3.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg": "^4.5.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -47,6 +51,6 @@
     "karma-sinon": "^1.0.4",
     "karma-unicorn-reporter": "^0.1.4",
     "mocha": "^2.4.5",
-    "sinon": "^1.17.3"
+    "sinon": "^1.17.3",
   }
 }
