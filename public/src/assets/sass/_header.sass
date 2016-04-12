@@ -8,31 +8,93 @@ header
 
 nav
   position: absolute
+  height: 100%
   right: 0
   top: 0
-  transition: transform 0.5s
+  transition: all 0.5s
 
 .menu-down
-  transform: translateY(80px)
+  transform: translateY(100%)
+  opacity: 1
 
 .menu-up
   transform: translateY(0)
+  opacity: 0
 
 nav ul
   list-style-type: none
-  background: #888
+  background-color: #ddd
+  margin: 0
   padding-left: 0
   text-align: center
 
-.main-title
+nav ul a
+  display: block
+  color: #000
+  background-color: #fff
+  margin-top: 2px
   position: relative
+  vertical-align: middle
+  padding: 0.5em 0.4em
+  transition: all 0.4s
+
+nav ul a:hover
+  color: #fff
+  background-color: #000
+
+.nav-item
+  display: inline-block
+
+.main-title
+  font-family: Wallpoet, sans-serif
+  position: relative
+  font-size: 2.2em
   margin: 0
-  padding: 0.8em 0
-  background: #fff
+  padding: 0.3em 0
+  background-color: #fff
+
+.main-title a
+  text-decoration: none
+  color: inherit
 
 .menu-trigger
   position: absolute
-  top: 5px
+  width: 40px
+  top: 50%
+  transform: translateY(-50%)
   right: 5px
   cursor: pointer
 
+@media all and (min-width: 500px)
+  nav
+    z-index: 10
+    height: 100%
+    transition: none
+
+  .menu-up
+    opacity: 1
+
+  .menu-down
+    transform: translateY(0)
+
+  nav ul
+    margin: 0
+    height: 100%
+    background-color: transparent
+
+  nav ul a
+    display: inline-block
+    margin-top: 0
+    height: 100%
+    padding: 0 0.5em
+
+  .nav-item
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
+
+  .main-title
+    background-color: transparent
+
+  .menu-trigger
+    display: none
