@@ -12,10 +12,10 @@
   <header ng-controller="navCtrl">
     <nav ng-class="{'menu-up' : !droppedDown, 'menu-down' : droppedDown}">
       <ul>
-        <li class="nav-item" ng-if="!loggedIn"><a ui-sref="login">Log In</a></li>
-        <li class="nav-item" ng-if="!loggedIn"><a ui-sref="signup">Sign Up</a></li>
-        <li class="nav-item" ng-if="loggedIn"><a href="#" ng-click="logOut()">Log Out</a></li>
-        <li class="nav-item" ng-if="loggedIn"><a ui-sref="addevent">Add An Event</a></li>
+        <a ui-sref="login" ng-if="!loggedIn"><li class="nav-item">Log In</li></a>
+        <a ui-sref="signup" ng-if="!loggedIn"><li class="nav-item">Sign Up</li></a>
+        <a href="#" ng-click="logOut()" ng-if="loggedIn"><li class="nav-item">Log Out</li></a>
+        <a ui-sref="addevent" ng-if="loggedIn"><li class="nav-item">Add An Event</li></a>
       </ul>
     </nav>
     <h1 class="main-title"><a href="#/">KARAOKE APP</a></h1>
