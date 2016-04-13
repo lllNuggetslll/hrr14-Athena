@@ -1,9 +1,9 @@
-<h2>Sign Up!</h2>
+<h3 class="form-header">Sign up to add events in your area</h3>
 
 <form name="signupForm" ng-submit="signup(signupForm.$valid)" novalidate>
-  <input type="text" ng-model="user.username"></input>
-  <input type="password" ng-model="user.password" ng-pattern="/^[a-zA-Z0-9]*$/" required></input>
-  <button>SUBMIT</button>
+  <input type="text" ng-model="user.username" placeholder="username"></input>
+  <input type="password" ng-model="user.password" placeholder="password" ng-pattern="/^[a-zA-Z0-9]*$/" required></input>
+  <button>signup</button>
 </form>
 
-<a ui-sref="login">Go to login page</a>
+<a ui-sref="login">Already have an account? Go to login page.</a>
