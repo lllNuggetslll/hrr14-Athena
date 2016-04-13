@@ -1,16 +1,16 @@
-var db = require('../config.js');
-var Bookshelf = require('bookshelf')(db);
-var path = require('path');
+var Bookshelf = require('../database');
+// var path = require('path');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
-var Event = require('./events.js');
+
+require('./events');
 
 
 var User = Bookshelf.Model.extend({
   tableName: 'users',
 
   events: function() {
-    return this.hasMany(Event);
+    return this.hasMany('Event');
   },
 
   comparePassword: function(attemptedPassword, callback) {
@@ -40,4 +40,4 @@ var User = Bookshelf.Model.extend({
 
 });
 
-module.exports = User;
+module.exports = Bookshelf.model('User', User);
