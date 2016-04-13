@@ -1,6 +1,8 @@
 <!-- <h4>Latitude: {{ lat }}</h4>
 <h4>Longitude: {{ long }}</h4> -->
-<div class="main-map-container">
-  <div id="map"></div>
+<div class="home-container">
+  <div class="main-map-container">
+    <div id="map"></div>
+  </div>
+  <karaoke-loader ng-if="loading"></karaoke-loader>
 </div>
-<karaoke-loader ng-if="loading"></karaoke-loader>
