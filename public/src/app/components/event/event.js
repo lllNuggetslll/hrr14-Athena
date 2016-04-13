@@ -16,6 +16,7 @@ angular.module('karaoke.event', [])
     $scope.artist = response.as_sung_by;    
     $scope.date = date.day;
     $scope.time = date.time;
+    
     rendermap(response.location_point.x, response.location_point.y);
   });
 
