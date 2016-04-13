@@ -7,14 +7,11 @@ module.exports = function (app, express) {
   app.post('/api/users/signup', userService.signup);
 
   app.get('user/local', eventService.getLocal);
-  // app.post('user/event', eventService.postEvent);
 
   //user helper for decoding token if route is addEvent
   app.use(helpers.decode);
 
-  app.route('api/addEvent') //not sure what this api is yet
-    .post() //define function in eventServices.js
-    .get(); //define function in eventServices.js
+  app.post('api/addEvent', eventService.addEvent);
 
   // handles errors for routes not handled above
   // or could we route to a default page like map view?
