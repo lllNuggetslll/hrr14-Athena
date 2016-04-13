@@ -1,5 +1,5 @@
-var Bookshelf = require('bookshelf')(pg);
-var path = require('path');
+// var Bookshelf = require('bookshelf')(pg);
+// var path = require('path');
 var connectionString = require('./connectionString.js');
 
 var pg = require('knex')({
