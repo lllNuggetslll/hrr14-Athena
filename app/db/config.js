@@ -3,7 +3,6 @@ var path = require('path');
 var connectionString = require('./connectionString.js');
 
 var pg = require('knex')({
-  user: 'postgres',
   client: 'pg',
   connection: {
     host: 'localhost',
@@ -14,13 +13,12 @@ var pg = require('knex')({
   }
 });
 
-
 // var db = Bookshelf.initialize({
 //   client: 'pg',
 //   connection: connectionString
 // });
 
-
+/////User Table/////
 
 pg.schema.hasTable('users').then(function(exists) {
   if (!exists) {
@@ -35,7 +33,23 @@ pg.schema.hasTable('users').then(function(exists) {
   }
 });
 
+/////Event Table/////
 
-
+pg.schema.hasTable('events').then(function(exists) {
+  if (!exists) {
+    return pg.schema.createTable('events', function(event) {
+      event.increments('id').primary();
+      event.foreign(id).references('users');
+      event.date("date", 4);
+      event.time[(p)]("time", 8);
+      event.string("type_of_meet", 15);
+      event.string('song_title', 20);
+      event.string('as_sung_by', 20);
+      event.point('location_point', 16);
+    }).then(function(table) {
+      console.log('Table created! ', table);
+    });
+  }
+});
 
 module.exports = pg;

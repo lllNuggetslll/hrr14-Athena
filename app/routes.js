@@ -13,8 +13,8 @@ module.exports = function (app, express) {
   app.use(helpers.decode);
 
   app.route('api/addEvent') //not sure what this api is yet
-    .post() //define function in eventServices.js
-    .get(); //define function in eventServices.js
+  app.post('api/addEvent', eventService.addEvent); //define function in eventServices.js
+     //define function in eventServices.js
 
   // handles errors for routes not handled above
   // or could we route to a default page like map view?
