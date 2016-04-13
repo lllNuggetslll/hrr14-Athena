@@ -12,7 +12,6 @@ angular.module('karaoke.addevent', [])
 
   $scope.addEvent = function(isValid) {
     if (isValid && $scope.marker) {
-      console.log($scope.event);
       eventFactory.addEvent($scope.event)
       .then(function(response) {
         // redirect to the new event
