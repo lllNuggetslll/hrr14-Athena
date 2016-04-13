@@ -3,11 +3,14 @@ header
   position: fixed
   background: #fff
   width: 100%
+  height: $topBar
   left: 0
   top: 0
+  z-index: 1
 
 nav
   position: absolute
+  margin-right: 1em
   height: 100%
   right: 0
   top: 0
@@ -23,7 +26,6 @@ nav
 
 nav ul
   list-style-type: none
-  background-color: #ddd
   margin: 0
   padding-left: 0
   text-align: center
@@ -32,7 +34,8 @@ nav ul a
   display: block
   color: #000
   background-color: #fff
-  margin-top: 2px
+  border: 2px solid #000
+  margin-top: 4px
   position: relative
   vertical-align: middle
   padding: 0.5em 0.4em
@@ -46,12 +49,20 @@ nav ul a:hover
   display: inline-block
 
 .main-title
+  background-color: #fff
+  height: 100%
+  position: relative
+  margin-left: 1em
+
+.main-title h1
   font-family: Wallpoet, sans-serif
   position: relative
   font-size: 2.2em
   margin: 0
-  padding: 0.3em 0
+  padding: 0
   background-color: #fff
+  top: 50%
+  transform: translateY(-50%)
 
 .main-title a
   text-decoration: none
@@ -87,6 +98,7 @@ nav ul a:hover
     margin-top: 0
     height: 100%
     padding: 0 0.5em
+    border: 0
 
   .nav-item
     position: relative

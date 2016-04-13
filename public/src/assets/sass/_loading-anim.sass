@@ -5,15 +5,26 @@ $t: 4s
   
 karaoke-loader
   position: fixed
+  top: 0
+  width: 100%
+  height: 100%
   z-index: 10
-  left: 50%
-  top: 50%
-  transform: translate(-50%, -50%)
+
+.ldr-message
+  width: 100%
+  position: absolute
+  text-align: center
+  bottom: 2em
+
+.ldr-message h4
+  font-weight: normal
+  margin: 0
+  text-transform: uppercase
+  letter-spacing: 0.12em
 
 .ldr-outer-container
   width: 100%
   height: 100%
-  transform: translateY(50%)
   perspective: 5000px
 
 .ldr-container
