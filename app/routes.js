@@ -10,6 +10,7 @@ module.exports = function (app, express) {
   // app.get('user/local', eventService.getLocal);
 
   app.get('/api/event', eventService.getEvents);
+  app.get('/api/event/:eventId', eventService.getOneEvent);
   //user helper for decoding token if route is addEvent
   app.use(helpers.decode);
   app.post('/api/event', eventService.addEvent);
