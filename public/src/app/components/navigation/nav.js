@@ -31,7 +31,9 @@ angular.module('karaoke.nav', [])
   };
 
   $scope.$on('$locationChangeStart', function(next, current) {
-    $scope.droppedDown = false;
+    if ($scope.droppedDown) {
+      $scope.toggleClass();
+    }
     $scope.loggedIn = authFactory.isAuth();
   });
 });
