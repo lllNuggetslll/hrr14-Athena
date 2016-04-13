@@ -7,7 +7,7 @@ var Event = Bookshelf.Model.extend({
   tableName: 'events',
 
   user: function() {
-    return this.belongsTo('User', 'users_id');
+    return this.belongsTo('User');
   }
 
 });
