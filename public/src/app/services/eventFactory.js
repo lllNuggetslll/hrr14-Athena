@@ -12,7 +12,18 @@ angular.module('karaoke.services')
     });
   };
 
+  var getOne = function(id) {
+    return $http({
+      method: 'GET',
+      url: '/api/event/' + id
+    })
+    .then(function(response) {
+      return response.data;
+    });
+  };
+
   return {
-    addEvent : addEvent
+    addEvent : addEvent,
+    getOne : getOne
   };
 });
