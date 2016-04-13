@@ -21,7 +21,7 @@ module.exports = {
       .then(function(event) {
         if (!event) {
           var newEvent = new Event({
-            foreign: id,
+            user_id: id,
             date: date,
             time: time,
             type_of_meet: type,

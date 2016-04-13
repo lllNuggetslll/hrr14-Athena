@@ -8,11 +8,10 @@ var events = require('./events.js');
 var Events = Bookshelf.Model.extend({
   tableName: 'events',
 
-  user: function(){
-    return this.belongsTo(User);
+  user: function() {
+    return this.belongsTo(user, 'user_id');
   }
 
 });
 
 module.exports = Events;
-
