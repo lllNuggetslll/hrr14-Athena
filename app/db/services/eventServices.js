@@ -21,19 +21,19 @@ module.exports = {
     var time = req.body.time.split('T')[1];
 
     new User({ id: req.user.id }).fetch().then(function(user) {
-        return user.events().create({
-          time: date + ' ' + time,
-          type_of_meet: req.body.type_of_meet,
-          song_title: req.body.song_title,
-          as_sung_by: req.body.as_sung_by,
-          location_point: req.body.location_point
-        });
-      })
-      .then(function(event) {
-        console.log('saved event');
-        // res.status(201);
-        res.status(201).send(event);
+      return user.events().create({
+        time: date + ' ' + time,
+        type_of_meet: req.body.type_of_meet,
+        song_title: req.body.song_title,
+        as_sung_by: req.body.as_sung_by,
+        location_point: req.body.location_point
       });
+    })
+    .then(function(event) {
+      console.log('saved event');
+      // res.status(201);
+      res.status(201).send(event);
+    });
   },
 
   getOneEvent: function(req, res, next) {
@@ -53,7 +53,9 @@ module.exports = {
   // THIS NEEDS TO GET BUILT OUT
   getEvents: function(req, res, next) {
     new Event()
-      .fetchAll()
+      .fetchAll({
+        withRelated: ['user']
+      })
       .then(function(events) {
         res.status(200).send(events);
       }).catch(function(err) {
