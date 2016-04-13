@@ -3,7 +3,7 @@ var Bookshelf = require('bookshelf')(db);
 var path = require('path');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
-var user = require('./user.js');
+var Event = require('./events.js');
 
 
 var User = Bookshelf.Model.extend({
