@@ -2,11 +2,18 @@ angular.module('karaoke.event', [])
 
 .controller('eventCtrl', function($scope, $stateParams, eventFactory) {
 
-  $scope.id = $stateParams.eventID;
+  $scope.creator = '';
+  $scope.song = '';
+  $scope.artist = '';
+  $scope.date = '';
+  $scope.time = '';
 
-  eventFactory.getOne($scope.id)
+  eventFactory.getOne($stateParams.eventID)
   .then(function(response) {
-    console.log(response);
+    $scope.creator = response.user.username;
+    $scope.song = response.song_title;
+    $scope.artist = response.as_sung_by;
+    
   });
 
 });
