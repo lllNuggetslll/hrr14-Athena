@@ -5,6 +5,7 @@ angular.module('karaoke.home', [])
   $scope.lat = '';
   $scope.long = '';
   $scope.loading = true;
+  $scope.loadingMessage = 'loading events in your area';
 
   // make a map
   var rendermap = function(lat, long) {
