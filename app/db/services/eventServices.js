@@ -42,9 +42,7 @@ module.exports = {
       withRelated : ['user']
     }).then(function(event) {
       if (event) {
-        // event.user().then(function(user) {
-          res.send(200, event);
-        // });
+        res.send(200, event);
       } else {
         res.status(404);
         res.send('event not found');
