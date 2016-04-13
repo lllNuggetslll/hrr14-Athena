@@ -1,6 +1,6 @@
 // add funtions for handling event routes
-var Event = require('../models/events.js');
-var User = require('../models/user.js');
+var Event = require('../models/events');
+var User = require('../models/user');
 var jwt = require('jwt-simple');
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
     var date = req.body.date.split('T')[0];
     var time = req.body.time.split('T')[1];
 
-    new User({ id: req.user.id }).fetch().then(function(user) {
+    new User({ id : req.user.id }).fetch().then(function(user) {
       return user.events().create({
         time: date + ' ' + time,
         type_of_meet: req.body.type_of_meet,
@@ -34,9 +34,26 @@ module.exports = {
       // res.status(201);
       res.send(201, event);
     });
+  },
+
+  getOneEvent: function(req, res, next) {
+
+    new Event({ id : req.params.eventId }).fetch({
+      withRelated : ['user']
+    }).then(function(event) {
+      if (event) {
+        // event.user().then(function(user) {
+          res.send(200, event);
+        // });
+      } else {
+        res.status(404);
+        res.send('event not found');
+      }
+    });
 
   },
 
+  // THIS NEEDS TO GET BUILT OUT
   getEvents: function(req, res, next) {
     next();
   }

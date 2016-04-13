@@ -1,6 +1,4 @@
-var db = require('../config.js');
-var User = require('../models/user.js');
-// var Users = require('../collections/users.js');
+var User = require('../models/user');
 var jwt = require('jwt-simple');
 
 module.exports = {
