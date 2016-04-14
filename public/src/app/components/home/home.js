@@ -15,16 +15,17 @@ angular.module('karaoke.home', [])
       $scope.lat = pos.coords.latitude;
       $scope.long = pos.coords.longitude;
 
-      queryLocalEvents($scope.lat, $scope.long);
+      // third arg passed is proximity, in meters
+      queryLocalEvents($scope.lat, $scope.long, 1600);
       rendermap($scope.lat, $scope.long); //<--render map with user location as center of view
-      // need: set up a default location for map center if no user location provided
       $scope.loading = false;
     });
   } else {
     $scope.lat = $rootScope.userLocation.latitude;
     $scope.long = $rootScope.userLocation.longitude;
 
-    queryLocalEvents($scope.lat, $scope.long);
+    // third arg passed is proximity, in meters
+    queryLocalEvents($scope.lat, $scope.long, 1600);
     rendermap($scope.lat, $scope.long);
     $scope.loading = false;
   }
@@ -42,8 +43,8 @@ angular.module('karaoke.home', [])
     // console.log(map.getBounds()); //<-- what we'll use to query the db, may add a buffer for preload outside of map
   }
 
-  function queryLocalEvents(lat, long) {
-    eventFactory.getInArea(lat, long)
+  function queryLocalEvents(lat, long, proximity) {
+    eventFactory.getInArea(lat, long, proximity)
     .then(function(events) {
       console.log(events);
     });

@@ -32,10 +32,10 @@ angular.module('karaoke.services')
     });
   };
 
-  var getInArea = function(lat, long) {
+  var getInArea = function(lat, long, proximity) {
     return $http({
       method: 'GET',
-      url: 'api/proximal/events/' + lat + '/' + long
+      url: 'api/proximal/events/' + lat + '/' + long + '/' + proximity
     })
     .then(function(response) {
       return response.data;

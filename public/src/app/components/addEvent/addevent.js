@@ -6,7 +6,7 @@ angular.module('karaoke.addevent', [])
   $scope.long = '';
 
   $scope.event = {};
-  $scope.event.location_point = '(' + 75 + ', ' + 100 + ')';
+  $scope.event.location = {};
 
   $scope.marker = null;
 
@@ -63,7 +63,7 @@ angular.module('karaoke.addevent', [])
 
     $scope.marker = L.marker([coords.lat, coords.lng], { icon: micIcon });
     // add the coords used for the marker to the event object
-    $scope.event.location_point = '(' + coords.lat + ', ' + coords.lng + ')';
+    $scope.event.location = { lat : coords.lat, long : coords.lng };
     $scope.marker.addTo(this);
   }
 

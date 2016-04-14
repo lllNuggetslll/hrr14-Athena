@@ -46,7 +46,9 @@ pg.schema.hasTable('events').then(function(exists) {
       event.string('type_of_meet', 15);
       event.string('song_title', 50);
       event.string('as_sung_by', 30);
-      event.specificType('location_point', 'point');
+      event.string('lat', 25);
+      event.string('long', 25);
+      event.specificType('location_point', 'GEOGRAPHY(point)');
       //specificType is the only option that allows choosing types
       //that arent available in knex. http://knexjs.org/#Schema-Building
       //it does require passing a valid postgres type as the second arg
