@@ -1,9 +1,15 @@
-<input type='text' ng-model='search' placeholder="Filter Events"></input>
+<input type="text" ng-model="search" placeholder="Filter Events"></input>
 
-<div ng-repeat='event in data.events | filter:search | orderBy: "fullTime"'>
-  <h3>Event Creator: {{ event.creator }}</h3>
-  <h3>Song Title: {{ event.song }}</h3>
-  <h3>As sung by: {{ event.artist }}</h3>
-  <h4>{{ event.date }}</h4>
-  <h4>{{ event.time }}</h4>
+<div ng-repeat="event in data.events | filter:search | orderBy: 'fullTime'">
+
+  <a ng-href="#/event/{{ event.eventId }}">
+    <div class="event-list-container">
+      <h4><b>{{ event.song }}</b></h4>
+      <h4>by {{ event.artist }}</h4>
+      <h5>{{ event.date }}</h5>
+      <h5>at {{ event.time }}</h5>
+      <div id="map_{{ event.eventId }}" class="event-list-map"></div>
+    </div>
+  </a> 
+
 </div>
