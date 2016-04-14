@@ -1,6 +1,6 @@
 angular.module('karaoke.event', [])
 
-.controller('eventCtrl', function($scope, $stateParams, eventFactory) {
+.controller('eventCtrl', function($scope, $stateParams, eventFactory, $sce) {
 
   $scope.creator = '';
   $scope.song = '';
@@ -16,7 +16,7 @@ angular.module('karaoke.event', [])
     $scope.artist = response.as_sung_by;
     $scope.date = date.day;
     $scope.time = date.time;
-
+    $scope.video = $sce.trustAsResourceUrl('http://www.youtube.com/embed?listType=search&list=' + response.as_sung_by + ' ' + response.song_title);
     rendermap(response.lat, response.long);
   });
 
