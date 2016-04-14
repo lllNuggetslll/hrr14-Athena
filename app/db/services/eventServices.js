@@ -1,6 +1,8 @@
 // add funtions for handling event routes
 var Event = require('../models/events');
 var User = require('../models/user');
+var db = require('../database');
+var knex = require('knex');
 var jwt = require('jwt-simple');
 
 module.exports = {
@@ -50,7 +52,6 @@ module.exports = {
 
   },
 
-  // THIS NEEDS TO GET BUILT OUT
   getEvents: function(req, res, next) {
     new Event()
       .fetchAll({
@@ -62,6 +63,41 @@ module.exports = {
         console.log(err);
         res.status(404).send('event not found');
       });
+  },
+
+  getProximalEvents: function(req, res, next) {
+
+    new Event()
+      .where(knex.raw('location_point <@ point(circle(( :lat, :long), 1))', {
+        lat: req.params.lat,
+        long: req.params.long
+      }))
+      .fetchAll()
+      .then(function(events) {
+        console.log(events);
+        res.status(200);
+        res.send('hey');
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(404);
+        res.send('uh oh');
+      });
+
+    // new Event()
+    //   .query(knex.raw("events"))
+    //   .fetchAll()
+    //   .then(function(events) {
+    //     console.log(events);
+    //     res.status(200);
+    //     res.send('hey');
+    //   })
+    //   .catch(function(err) {
+    //     console.log(err);
+    //     res.status(404);
+    //     res.send('uh oh');
+    //   });
+
   }
 
 };
