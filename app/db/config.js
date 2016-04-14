@@ -11,8 +11,6 @@ var pg = require('knex')({
   }
 });
 
-/////User Table/////
-
 pg.schema.hasTable('users').then(function(exists) {
   if (!exists) {
     return pg.schema.createTable('users', function(user) {
@@ -26,27 +24,18 @@ pg.schema.hasTable('users').then(function(exists) {
   }
 });
 
-/////Event Table/////
-
 pg.schema.hasTable('events').then(function(exists) {
   if (!exists) {
     return pg.schema.createTable('events', function(event) {
       event.increments('id').primary();
-      //perhaps we want to set user_id column to username to have it readily
-      //available for display? might make queries simpler
       event.integer('user_id').references('users.id');
-      event.timestamp('time'); //defaults to postgres-timestamptz which includes time, date and time zone
+      event.timestamp('time'); 
       event.string('type_of_meet', 15);
       event.string('song_title', 50);
       event.string('as_sung_by', 30);
       event.string('lat', 25);
       event.string('long', 25);
       event.specificType('location_point', 'GEOGRAPHY(point)');
-      //specificType is the only option that allows choosing types
-      //that arent available in knex. http://knexjs.org/#Schema-Building
-      //it does require passing a valid postgres type as the second arg
-      //or it fails to build, so it's certianly a step in the right direction
-      //queries may be tricky or maybe not...
     }).then(function(table) {
       console.log('Table created! ', table);
     });
