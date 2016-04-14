@@ -6,8 +6,4 @@ var Users = Bookshelf.Collection.extend({
   model: User
 });
 
-//new db.Collection();
-
-//Users.model = User;
-
 module.exports = Users;

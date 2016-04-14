@@ -6,6 +6,4 @@ var Events = Bookshelf.Collection.extend({
   model: Event
 });
 
-
-
 module.exports = Events;

@@ -7,8 +7,6 @@ module.exports = function (app, express) {
   app.post('/api/users/login', userService.login);
   app.post('/api/users/signup', userService.signup);
 
-  // app.get('user/local', eventService.getLocal);
-
   app.get('/api/event', eventService.getEvents);
   app.get('/api/event/:eventId', eventService.getOneEvent);
   app.get('/api/proximal/events/:lat/:long/:proximity', eventService.getProximalEvents);
@@ -18,7 +16,6 @@ module.exports = function (app, express) {
   app.post('/api/event', eventService.addEvent);
 
   // handles errors for routes not handled above
-  // or could we route to a default page like map view?
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 };

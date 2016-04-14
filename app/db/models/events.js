@@ -1,6 +1,4 @@
-// var db = require('../config.js');
 var Bookshelf = require('../database');
-// var path = require('path');
 require('./user');
 
 var Event = Bookshelf.Model.extend({
