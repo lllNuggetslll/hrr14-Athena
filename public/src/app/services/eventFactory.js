@@ -81,10 +81,12 @@ angular.module('karaoke.services')
   var populateEvents = function (data) {
     var eventsArr = [];
     data.forEach(function(e, i, a) {
+      console.log(e);
       var eventObj = {};
       var date = parseTime(e.time);
       eventObj.eventId = e.id;
       eventObj.fullTime = e.time;
+      eventObj.type = e.type_of_meet;
       eventObj.lat = e.lat;
       eventObj.long = e.long;
       eventObj.creator = e.user.username;

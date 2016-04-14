@@ -1,3 +1,42 @@
+.allevents-wrap
+  padding-top: 1px
 
-.event-list-map
-  height: 200px
+.event-list-wrapper
+  text-decoration: none
+  display: block
+  color: #fff
+  max-width: 600px
+  margin: 0 auto 1em
+  h4, h5
+    margin: 0
+
+.event-list-container
+  position: relative
+  background-color: rgba(0, 0, 0, 1)
+  border: 2px solid #fff
+  padding: 1em
+  overflow: hidden
+  &:after
+    position: absolute
+    width: 100%
+    height: 100%
+    font-size: 4em
+    letter-spacing: 0.5em
+    left: 0
+    top: 0
+    text-align: center
+    z-index: -1
+
+.event-list-container:hover
+  background-color: rgba(0,0,0,0.6)
+
+.event-battle:after
+  content: 'BATTLE'
+  background-color: #FF0000
+
+.event-collabo:after
+  content: 'COLLABO'
+  background-color: #0000FF
+
+.deemphasize
+  font-size: 0.7rem

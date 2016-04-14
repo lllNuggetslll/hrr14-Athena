@@ -1,14 +1,12 @@
-<input type="text" ng-model="search" placeholder="Filter Events"></input>
-
-<div ng-repeat="event in data.events | filter:search | orderBy: 'fullTime'">
-
-  <a ng-href="#/event/{{ event.eventId }}">
-    <div class="event-list-container">
-      <h4><b>{{ event.song }}</b></h4>
-      <h4>by {{ event.artist }}</h4>
-      <h5>{{ event.date }}</h5>
-      <h5>at {{ event.time }}</h5>
-    </div>
-  </a> 
-
+<div class="allevents-wrap">
+  <input type="text" ng-model="search" placeholder="Filter Events"></input>
+  <div ng-repeat="event in data.events | filter:search | orderBy: 'fullTime'">
+    <a ng-href="#/event/{{ event.eventId }}" class="event-list-wrapper">
+      <div class="event-list-container event-{{ event.type }}">
+        <h4><b>{{ event.song }}</b> <span class="deemphasize">by</span> {{ event.artist }}</h4>
+        <h5>{{ event.date }} <span class="deemphasize">at</span> {{ event.time }}</h5>
+        <h5>Click for more information about this event</h5>
+      </div>
+    </a> 
+  </div>
 </div>
