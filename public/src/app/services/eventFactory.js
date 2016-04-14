@@ -85,6 +85,8 @@ angular.module('karaoke.services')
       var date = parseTime(e.time);
       eventObj.eventId = e.id;
       eventObj.fullTime = e.time;
+      eventObj.lat = e.lat;
+      eventObj.long = e.long;
       eventObj.creator = e.user.username;
       eventObj.song = e.song_title;
       eventObj.artist = e.as_sung_by;
