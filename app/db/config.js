@@ -1,5 +1,3 @@
-// var Bookshelf = require('bookshelf')(pg);
-// var path = require('path');
 var connectionString = require('./connectionString.js');
 
 var pg = require('knex')({
@@ -12,11 +10,6 @@ var pg = require('knex')({
     charset: 'utf8'
   }
 });
-
-// var db = Bookshelf.initialize({
-//   client: 'pg',
-//   connection: connectionString
-// });
 
 /////User Table/////
 
