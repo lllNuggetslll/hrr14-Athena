@@ -14,7 +14,6 @@ angular.module('karaoke.services')
     } else {
       $window.navigator.geolocation.getCurrentPosition(
         function(pos) {
-          console.log(pos);
           deferred.resolve(pos);
         },
         function(err) {

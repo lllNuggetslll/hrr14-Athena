@@ -17,7 +17,7 @@ angular.module('karaoke.event', [])
     $scope.date = date.day;
     $scope.time = date.time;
 
-    rendermap(response.location_point.x, response.location_point.y);
+    rendermap(response.lat, response.long);
   });
 
   var rendermap = function(lat, long) {

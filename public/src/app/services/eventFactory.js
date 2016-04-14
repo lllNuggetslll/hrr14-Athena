@@ -25,7 +25,17 @@ angular.module('karaoke.services')
   var getAll = function() {
     return $http({
       method: 'GET',
-      url: 'api/events'
+      url: 'api/event'
+    })
+    .then(function(response) {
+      return response.data;
+    });
+  };
+
+  var getInArea = function(lat, long, proximity) {
+    return $http({
+      method: 'GET',
+      url: 'api/proximal/events/' + lat + '/' + long + '/' + proximity
     })
     .then(function(response) {
       return response.data;
@@ -90,6 +100,7 @@ angular.module('karaoke.services')
     addEvent: addEvent,
     getOne: getOne,
     getAll: getAll,
+    getInArea: getInArea,
     parseTime: parseTime,
     populateEvents: populateEvents
   };
