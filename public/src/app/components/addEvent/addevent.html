@@ -1,4 +1,4 @@
-<div class="addevent-wrap">
+<div class="addevent-wrap loading-{{ loading }}">
   <h3>Add Event</h3>
   <form name="addEventForm" ng-submit="addEvent(addEventForm.$valid)" novalidate>
     <input type="date" ng-model="event.date" required><br>
@@ -11,3 +11,5 @@
     <button>SUBMIT</button>
   </form>
 </div>
+
+<karaoke-loader ng-if="loading"></karaoke-loader>
