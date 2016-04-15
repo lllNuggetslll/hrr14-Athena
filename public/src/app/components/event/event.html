@@ -1,13 +1,16 @@
-<h3>Event Creator: {{ creator }}</h3>
-<h3>Song Title: {{ song }}</h3>
-<h3>As sung by: {{ artist }}</h3>
-<h4>{{ date }}</h4>
-<h4>{{ time }}</h4>
-<div class="event-elements-container">
-  <div class="event-map-container event-element">
-    <div id="event_map"></div>
-  </div>
-  <div class="event-video-container event-element">
-    <iframe src='{{video}}' frameborder="0"></iframe>
+<div class="eventdetail-wrap">
+  <h3 class="eventdetail-type" ng-if="type == 'battle'">Better come to play! We gotta battle on our hands!</h3>
+  <h3 class="eventdetail-type" ng-if="type == 'collabo'">A harmonious joining of voices. This event is a collabo.</h3>
+  <h3>Event Host: {{ creator }}</h3>
+  <h5>{{ date }} <span class="deemphasize">at</span> {{ time }}</h5>
+  <h3><span class="deemphasize">We will be singing</span> {{ song }}</h3>
+  <h3><span class="deemphasize">As sung by</span> {{ artist }}</h3>
+  <div class="event-elements-container">
+    <div class="event-map-container event-element">
+      <div id="event_map"></div>
+    </div>
+    <div class="event-video-container event-element">
+      <iframe src='{{video}}' frameborder="0"></iframe>
+    </div>
   </div>
 </div>
