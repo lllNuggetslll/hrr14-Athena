@@ -12,10 +12,3 @@ console.log("Activate interlock! Dynotherms connected! Infracells up! Mega thrus
 
 
 
-// MAIN ENTRY POINT FOR THE APP
-
-// require in server modules from ./app/
-// fire up the server
-
-
-//wateva you say ben

@@ -1,4 +1,3 @@
-// add funtions for handling event routes
 var Event = require('../models/events');
 var User = require('../models/user');
 var knex = require('knex');
@@ -6,27 +5,25 @@ var jwt = require('jwt-simple');
 
 module.exports = {
   addEvent: function(req, res, next) {
-    // process date and time to lump them together
     var date = req.body.date.split('T')[0];
     var time = req.body.time.split('T')[1];
 
     new User({ id: req.user.id }).fetch().then(function(user) {
-      console.log(req.body.location_point);
-      return user.events().create({
-        time: date + ' ' + time,
-        type_of_meet: req.body.type_of_meet,
-        song_title: req.body.song_title,
-        as_sung_by: req.body.as_sung_by,
-        lat: req.body.location.lat,
-        long: req.body.location.long,
-        location_point: 'POINT(' + req.body.location.lat + ' ' + req.body.location.long + ')'
+        console.log(req.body.location_point);
+        return user.events().create({
+          time: date + ' ' + time,
+          type_of_meet: req.body.type_of_meet,
+          song_title: req.body.song_title,
+          as_sung_by: req.body.as_sung_by,
+          lat: req.body.location.lat,
+          long: req.body.location.long,
+          location_point: 'POINT(' + req.body.location.lat + ' ' + req.body.location.long + ')'
+        });
+      })
+      .then(function(event) {
+        console.log('saved event');
+        res.status(201).send(event);
       });
-    })
-    .then(function(event) {
-      console.log('saved event');
-      // res.status(201);
-      res.status(201).send(event);
-    });
   },
 
   getOneEvent: function(req, res, next) {
@@ -65,13 +62,11 @@ module.exports = {
             return evt.attributes;
           });
         }
-        res.status(200);
-        res.send(events);
+        res.status(200).send(events);
       })
       .catch(function(err) {
         console.log(err);
-        res.status(404);
-        res.send('error');
+        res.status(404).send('error');
       });
   }
 };

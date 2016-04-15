@@ -2,7 +2,7 @@ var User = require('../models/user');
 var jwt = require('jwt-simple');
 
 module.exports = {
-  login: function (req, res, next) {
+  login: function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
 
@@ -15,7 +15,7 @@ module.exports = {
           user.comparePassword(password, function(match) {
             if (match) {
               var token = jwt.encode(user, 'secret');
-              res.json({token: token});
+              res.json({ token: token });
             } else {
               res.redirect('/login');
             }
@@ -24,53 +24,47 @@ module.exports = {
       });
   },
 
-  signup: function (req, res, next) {
+  signup: function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
 
     new User({ username: username })
-    .fetch()
-    .then(function(user) {
-      if (!user) {
-        var newUser = new User({
-          username: username,
-          password: password
-        });
-        newUser.save()
-          .then(function(newUser) {
-          //newUser = new Users //Users.add(newUser);
-            var token = jwt.encode(newUser, 'secret');
-            res.json({token: token});
+      .fetch()
+      .then(function(user) {
+        if (!user) {
+          var newUser = new User({
+            username: username,
+            password: password
           });
-      } else {
-        console.log('Account already exists');
-        res.redirect('/signup');
-      }
-    });
+          newUser.save()
+            .then(function(newUser) {
+              var token = jwt.encode(newUser, 'secret');
+              res.json({ token: token });
+            });
+        } else {
+          console.log('Account already exists');
+          res.redirect('/signup');
+        }
+      });
   },
 
-  //not completely sure where to use checkAuth
-  //it was used in shortly to confirm that token
-  //is for a real/existing username
-
-  // could use something very similar for getting username
-  // when creating an event
-  checkAuth: function (req, res, next) {
+  checkAuth: function(req, res, next) {
     var token = req.headers['x-access-token'];
+
     if (!token) {
       next(new Error('No token'));
     } else {
       var user = jwt.decode(token, 'secret');
-      new User({username: user.username})
+      new User({ username: user.username })
         .fetch()
-        .then(function (foundUser) {
+        .then(function(foundUser) {
           if (foundUser) {
             res.send(200);
           } else {
             res.send(401);
           }
         })
-        .fail(function (error) {
+        .fail(function(error) {
           next(error);
         });
     }
