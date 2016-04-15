@@ -10,7 +10,8 @@ angular.module('karaoke', [
   'karaoke.addevent',
   'karaoke.event',
   'karaoke.allevents',
-  'ui.router'
+  'ui.router',
+  'ngAnimate'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
