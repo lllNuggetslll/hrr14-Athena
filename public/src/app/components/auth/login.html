@@ -1,9 +1,11 @@
-<h3 class="form-header">Log in to add events in your area</h3>
+<div class="authview-wrap">
+  <h3 class="form-header">Log in to add events in your area</h3>
 
-<form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
-  <input type="text" ng-model="user.username" placeholder="username" required></input>
-  <input type="password" ng-model="user.password" placeholder="password" required></input>
-  <button>log in</button>
-</form>
+  <form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
+    <input type="text" ng-model="user.username" placeholder="username" required></input>
+    <input type="password" ng-model="user.password" placeholder="password" required></input>
+    <button>log in</button>
+  </form>
 
-<a ui-sref="signup">Don't have an account? Create an account here.</a>
+  <a ui-sref="signup">Don't have an account? Create an account here.</a>
+</div>

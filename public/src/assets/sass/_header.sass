@@ -1,4 +1,9 @@
 // Header
+.header-wrap
+  position: relative
+  height: 100%
+  width: 100%
+
 header 
   position: fixed
   background: #fff
@@ -6,7 +11,7 @@ header
   height: $topBar
   left: 0
   top: 0
-  z-index: 1
+  z-index: 1500 // set to make sure it is over the leaflet components
 
 nav
   position: absolute
@@ -116,3 +121,14 @@ nav ul a:hover
 
   .menu-trigger
     display: none
+
+@media all and (min-width: 932px)
+  .header-wrap
+    max-width: 900px
+    margin: 0 auto
+
+  nav
+    margin-right: 0
+
+  .main-title
+    margin-left: 0

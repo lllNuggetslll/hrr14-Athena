@@ -1,12 +1,15 @@
-<h2>Add Event</h2>
+<div class="addevent-wrap loading-{{ loading }}">
+  <h3>Add Event</h3>
+  <form name="addEventForm" ng-submit="addEvent(addEventForm.$valid)" novalidate>
+    <input type="date" ng-model="event.date" required><br>
+    <input type="time" ng-model="event.time" required><br>
+    <input type="text" ng-model="event.as_sung_by" placeholder="Artist" required><br>
+    <input type="text" ng-model="event.song_title" placeholder="Song" required><br>
+    <input type="radio" ng-model="event.type_of_meet" value="battle"> Battle<br>
+    <input type="radio" ng-model="event.type_of_meet" value="collabo"> Collabo<br>
+    <div id="create-event_map" style="height: 250px"></div>
+    <button>SUBMIT</button>
+  </form>
+</div>
 
-<form name="addEventForm" ng-submit="addEvent(addEventForm.$valid)" novalidate>
-  <input type="date" ng-model="event.date"><br>
-  <input type="time" ng-model="event.time"><br>
-  <input type="text" ng-model="event.as_sung_by" placeholder="Artist"><br>
-  <input type="text" ng-model="event.song_title" placeholder="Song"><br>
-  <input type="radio" ng-model="event.type_of_meet" value="battle"> Battle<br>
-  <input type="radio" ng-model="event.type_of_meet" value="collabo"> Collabo<br>
-  <div id="create-event_map" style="height: 150px"></div>
-  <button>SUBMIT</button>
-</form>
+<karaoke-loader ng-if="loading"></karaoke-loader>

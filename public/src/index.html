@@ -9,24 +9,26 @@
 </head>
 <body>
   <header ng-controller="navCtrl">
-    <nav ng-class="{'menu-up' : !droppedDown, 'menu-down' : droppedDown}">
-      <ul>
-        <a ui-sref="login" ng-if="!loggedIn"><li class="nav-item">Log In</li></a>
-        <a ui-sref="signup" ng-if="!loggedIn"><li class="nav-item">Sign Up</li></a>
-        <a href="#" ng-click="logOut()" ng-if="loggedIn"><li class="nav-item">Log Out</li></a>
-        <a ui-sref="addevent" ng-if="loggedIn"><li class="nav-item">Add An Event</li></a>
-        <a ui-sref="allevents"><li class="nav-item">All Events</li></a>
-      </ul>
-    </nav>
-    <div class="main-title">
-      <h1><a href="#/">KARAOKE APP</a></h1>
-    </div>
-    <div ng-click="toggleMenu()" class="menu-trigger">
-      <svg viewBox="0 0 36 26">
-        <line id="burgerLine1" stroke-linecap="round" stroke="#424242" x1="9" y1="7" x2="27" y2="7" stroke-width="3" />
-        <line id="burgerLine2" stroke-linecap="round" stroke="#424242" x1="9" y1="13" x2="27" y2="13" stroke-width="3" stroke-opacity="1" />
-        <line id="burgerLine3" stroke-linecap="round" stroke="#424242" x1="9" y1="19" x2="27" y2="19" stroke-width="3" />
-      </svg>
+    <div class="header-wrap">
+      <nav ng-class="{'menu-up' : !droppedDown, 'menu-down' : droppedDown}">
+        <ul>
+          <a ui-sref="login" ng-if="!loggedIn"><li class="nav-item">Log In</li></a>
+          <a ui-sref="signup" ng-if="!loggedIn"><li class="nav-item">Sign Up</li></a>
+          <a href="#" ng-click="logOut()" ng-if="loggedIn"><li class="nav-item">Log Out</li></a>
+          <a ui-sref="addevent" ng-if="loggedIn"><li class="nav-item">Add An Event</li></a>
+          <a ui-sref="allevents"><li class="nav-item">All Events</li></a>
+        </ul>
+      </nav>
+      <div class="main-title">
+        <h1><a href="#/">KARAOKE APP</a></h1>
+      </div>
+      <div ng-click="toggleMenu()" class="menu-trigger">
+        <svg viewBox="0 0 36 26">
+          <line id="burgerLine1" stroke-linecap="round" stroke="#424242" x1="9" y1="7" x2="27" y2="7" stroke-width="3" />
+          <line id="burgerLine2" stroke-linecap="round" stroke="#424242" x1="9" y1="13" x2="27" y2="13" stroke-width="3" stroke-opacity="1" />
+          <line id="burgerLine3" stroke-linecap="round" stroke="#424242" x1="9" y1="19" x2="27" y2="19" stroke-width="3" />
+        </svg>
+      </div>
     </div>
   </header>
 

@@ -8,7 +8,26 @@ angular.module('karaoke.addevent', [])
   $scope.event = {};
   $scope.event.location = {};
 
+  $scope.loading = true;
+  $scope.loadingMessage = 'establishing user location';
+
   $scope.marker = null;
+
+  if (!$rootScope.userLocation) {
+    locationFactory.getPosition()
+    .then(function(pos) {
+      $rootScope.userLocation = pos.coords;
+      $scope.lat = pos.coords.latitude;
+      $scope.long = pos.coords.longitude;
+      rendermap($scope.lat, $scope.long);
+      $scope.loading = false;
+    });
+  } else {
+    $scope.lat = $rootScope.userLocation.latitude;
+    $scope.long = $rootScope.userLocation.longitude;
+    rendermap($scope.lat, $scope.long);
+    $scope.loading = false;
+  }
 
   $scope.addEvent = function(isValid) {
     if (isValid && $scope.marker) {
@@ -17,12 +36,11 @@ angular.module('karaoke.addevent', [])
         // redirect to the new event
         $state.go('event', { eventID : response.id });
       });
-      
     }
   };
 
   // make a map
-  var rendermap = function(lat, long) {
+  function rendermap(lat, long) {
     var map = L.map('create-event_map').setView([lat, long], 15);  //<-- zoom level, larger is zoomed in
     L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -33,21 +51,8 @@ angular.module('karaoke.addevent', [])
     }).addTo(map);
 
     map.on('click', mapClickHandler.bind(map));
-  };
-
-  if (!$rootScope.userLocation) {
-    locationFactory.getPosition()
-    .then(function(pos) {
-      $rootScope.userLocation = pos.coords;
-      $scope.lat = pos.coords.latitude;
-      $scope.long = pos.coords.longitude;
-      rendermap($scope.lat, $scope.long);
-    });
-  } else {
-    $scope.lat = $rootScope.userLocation.latitude;
-    $scope.long = $rootScope.userLocation.longitude;
-    rendermap($scope.lat, $scope.long);
   }
+
 
   function mapClickHandler(e) {
     var coords = e.latlng;
