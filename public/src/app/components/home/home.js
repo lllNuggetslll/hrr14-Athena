@@ -1,13 +1,12 @@
 angular.module('karaoke.home', [])
 
-.controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, mapFactory, $location) {
+.controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, $location) {
 
   $scope.userMap = null;
   $scope.lat = '';
   $scope.long = '';
   $scope.loading = true;
   $scope.loadingMessage = 'loading events in your area';
-
 
   if (!$rootScope.userLocation) {
     locationFactory.getPosition()
