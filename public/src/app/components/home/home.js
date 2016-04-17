@@ -2,7 +2,7 @@ angular.module('karaoke.home', [])
 
 .controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, mapFactory, $location) {
 
-  $scope.map;
+  $scope.userMap = null;
   $scope.lat = '';
   $scope.long = '';
   $scope.loading = true;
@@ -32,8 +32,7 @@ angular.module('karaoke.home', [])
   }
   // make a map
   function rendermap(lat, long) {
-    var map = L.map('map').setView([lat, long], 15); //<-- zoom level, larger is zoomed in
-    $scope.map = map;
+    $scope.userMap = L.map('map').setView([lat, long], 15); //<-- zoom level, larger is zoomed in
     L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       subdomains: 'abcd',
@@ -60,12 +59,12 @@ angular.module('karaoke.home', [])
     });
 
     for (var i = 0; i < events.length; i++) {
-      markers[i] = L.marker([events[i]['lat'], events[i]['long']], { icon: micIcon })
-        .addTo($scope.map)
+      markers[i] = L.marker([events[i].lat, events[i].long], { icon: micIcon })
+        .addTo($scope.userMap)
         .bindPopup("Hello. I am a popup.")
         .on('click', onClick)
         .on('mouseover', mouseIn);
-      markers[i].eventId = events[i]['id'];
+      markers[i].eventId = events[i].id;
     }
 
     function mouseIn() {
