@@ -3,7 +3,7 @@ module.exports = function(config) {
 
     basePath: './',
 
-    frameworks: ['mocha', 'chai', 'sinon'],
+    frameworks: ['mocha', 'chai-spies', 'chai', 'sinon'],
 
     files: [
       // source files
@@ -18,6 +18,7 @@ module.exports = function(config) {
       'public/src/app/services/authFactory.js',
       'public/src/app/services/locationFactory.js',
       'public/src/app/services/eventFactory.js',
+      'public/src/app/services/burgerService.js',
       'public/src/app/directives/loader/loader.js',
       'public/src/app/components/navigation/nav.js',
       'public/src/app/components/home/home.js',
