@@ -52,16 +52,24 @@ angular.module('karaoke.home', [])
 
   function populateMap(events) {
     var markers = [];
-    var locIcon = L.icon({
-      iconUrl: 'src/assets/leaflet/images/marker-icon.png',
-      iconAnchor: [13, 13]
+    var micIcon = L.icon({
+      iconUrl: 'src/assets/images/mic.svg',
+      iconSize: [26, 26],
+      iconAnchor: [13, 13],
+      popupAnchor: [4, -10]
     });
 
     for (var i = 0; i < events.length; i++) {
-      markers[i] = L.marker([events[i]['lat'], events[i]['long']], { icon: locIcon })
+      markers[i] = L.marker([events[i]['lat'], events[i]['long']], { icon: micIcon })
         .addTo($scope.map)
-        .on('click', onClick);
-      markers[i].eventId = events[i]['id']
+        .bindPopup("Hello. I am a popup.")
+        .on('click', onClick)
+        .on('mouseover', mouseIn);
+      markers[i].eventId = events[i]['id'];
+    }
+
+    function mouseIn() {
+      this.openPopup();
     }
 
     function onClick(e) {
