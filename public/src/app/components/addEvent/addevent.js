@@ -15,16 +15,12 @@ angular.module('karaoke.addevent', [])
       $rootScope.userLocation = pos.coords;
       $scope.lat = pos.coords.latitude;
       $scope.long = pos.coords.longitude;
-      mapService.renderMap($scope, $scope.lat, $scope.long, 15, 0, 20, 'create-event_map');
-      $scope.map.on('click', mapClickHandler.bind($scope.map));
-      $scope.loading = false;
+      addMap();
     });
   } else {
     $scope.lat = $rootScope.userLocation.latitude;
     $scope.long = $rootScope.userLocation.longitude;
-    mapService.renderMap($scope, $scope.lat, $scope.long, 15, 0, 20, 'create-event_map');
-    $scope.map.on('click', mapClickHandler.bind($scope.map));
-    $scope.loading = false;
+    addMap();
   }
 
   $scope.addEvent = function(isValid) {
@@ -36,6 +32,12 @@ angular.module('karaoke.addevent', [])
       });
     }
   };
+
+  function addMap() {
+    mapService.renderMap($scope, $scope.lat, $scope.long, 15, 0, 20, 'create-event_map');
+    $scope.map.on('click', mapClickHandler.bind($scope.map));
+    $scope.loading = false;
+  }
 
   function mapClickHandler(e) {
     var coords = e.latlng;

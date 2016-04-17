@@ -1,6 +1,6 @@
 angular.module('karaoke.services')
 
-.factory('mapService', function() {
+.factory('mapService', function(eventFactory) {
   var renderMap = function(scope, lat, long, zoom, minZoom, maxZoom, mapId) {
     scope.map = L.map(mapId).setView([lat, long], zoom);  //<-- zoom level, larger is zoomed in
     L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
@@ -22,8 +22,46 @@ angular.module('karaoke.services')
     marker.addTo(map);
   };
 
+  var populateMap = function(scope, location, events) {
+    var markers = [];
+    var micIcon = L.icon({
+      iconUrl: 'src/assets/images/mic.svg',
+      iconSize: [26, 26],
+      iconAnchor: [13, 13],
+      popupAnchor: [4, -10]
+    });
+
+    events.forEach(function(event, i) {
+      markers[i] = L.marker([event.lat, event.long], { icon: micIcon })
+        .addTo(scope.map)
+        .bindPopup(buildPopup(event))
+        .on('click', onClick)
+        .on('mouseover', mouseIn);
+      markers[i].eventId = event.id;
+    });
+
+    function buildPopup(e) {
+      var date = eventFactory.parseTime(e.time);
+      var popup = '<div><b style="font-size:1.2em">' + e.song_title + '</b> by <b style="font-size:1.2em">' + e.as_sung_by + '</b></div>';
+      popup += '<div>' + date.day + ' <span class="deemphasize">at</span> ' + date.time + '</div>';
+      popup += '<a href="#/event/' + e.id + '">Link to Event</a>';
+      return popup;
+    }
+
+    function mouseIn() {
+      this.openPopup();
+    }
+
+    function onClick(e) {
+      var newPath = '/event/' + this.eventId;
+      location.path(newPath);
+      scope.$apply();
+    }
+  };
+
   return {
     renderMap: renderMap,
-    addIcon: addIcon
+    addIcon: addIcon,
+    populateMap: populateMap
   };
 });
