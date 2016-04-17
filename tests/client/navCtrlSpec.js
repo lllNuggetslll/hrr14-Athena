@@ -1,13 +1,14 @@
 'use strict';
 
 describe('navCtrl', function() {
-  var $scope, $rootScope, $location, createController;
+  var $scope, $rootScope, $location, authFactory, createController;
 
   beforeEach(module('karaoke'));
   beforeEach(inject(function($injector) {
 
     $rootScope = $injector.get('$rootScope');
     $location = $injector.get('$location');
+    authFactory = $injector.get('authFactory');
     $scope = $rootScope.$new();
 
     var $controller = $injector.get('$controller');
@@ -15,7 +16,8 @@ describe('navCtrl', function() {
     createController = function() {
       return $controller('navCtrl', {
         $scope: $scope,
-        $location: $location
+        $location: $location,
+        authFactory: authFactory
       });
     };
 
@@ -31,19 +33,19 @@ describe('navCtrl', function() {
     expect($scope.droppedDown).to.equal(false);
   });
 
-  it('should have a toggleClass function on the $scope', function() {
-    expect($scope.toggleClass).to.be.a('function');
+  it('should have a toggleMenu function on the $scope', function() {
+    expect($scope.toggleMenu).to.be.a('function');
   });
 
-  it('should toggle droppedDown when toggleClass is called', function() {
-    $scope.toggleClass();
+  it('should toggle droppedDown when toggleMenu is called', function() {
+    $scope.toggleMenu();
     expect($scope.droppedDown).to.equal(true);
-    $scope.toggleClass();
+    $scope.toggleMenu();
     expect($scope.droppedDown).to.equal(false);
   });
 
   it('should always set droppedDown to false when the state changes', function() {
-    $scope.toggleClass();
+    $scope.toggleMenu();
     // trigger a $locationChangeStart event
     $location.path('/login');
     $rootScope.$apply();
