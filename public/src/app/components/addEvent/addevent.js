@@ -1,6 +1,6 @@
 angular.module('karaoke.addevent', [])
 
-.controller('addEventCtrl', function($scope, $state, $rootScope, eventFactory, locationFactory) {
+.controller('addEventCtrl', function($scope, $state, $rootScope, eventFactory, locationFactory, mapService) {
   $scope.lat = '';
   $scope.long = '';
   $scope.event = {};
@@ -15,13 +15,15 @@ angular.module('karaoke.addevent', [])
       $rootScope.userLocation = pos.coords;
       $scope.lat = pos.coords.latitude;
       $scope.long = pos.coords.longitude;
-      rendermap($scope.lat, $scope.long);
+      mapService.renderMap($scope, $scope.lat, $scope.long, 15, 0, 20, 'create-event_map');
+      $scope.map.on('click', mapClickHandler.bind($scope.map));
       $scope.loading = false;
     });
   } else {
     $scope.lat = $rootScope.userLocation.latitude;
     $scope.long = $rootScope.userLocation.longitude;
-    rendermap($scope.lat, $scope.long);
+    mapService.renderMap($scope, $scope.lat, $scope.long, 15, 0, 20, 'create-event_map');
+    $scope.map.on('click', mapClickHandler.bind($scope.map));
     $scope.loading = false;
   }
 
@@ -34,18 +36,6 @@ angular.module('karaoke.addevent', [])
       });
     }
   };
-
-  function rendermap(lat, long) {
-    var map = L.map('create-event_map').setView([lat, long], 15);
-    L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      subdomains: 'abcd',
-      minZoom: 0,
-      maxZoom: 20,
-      ext: 'png'
-    }).addTo(map);
-    map.on('click', mapClickHandler.bind(map));
-  }
 
   function mapClickHandler(e) {
     var coords = e.latlng;
