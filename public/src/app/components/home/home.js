@@ -14,8 +14,8 @@ angular.module('karaoke.home', [])
         $rootScope.userLocation = pos.coords;
         $scope.lat = pos.coords.latitude;
         $scope.long = pos.coords.longitude;
-
-        rendermap($scope.lat, $scope.long); //<--render map with user location as center of view
+        // render map with user location as center of view
+        rendermap($scope.lat, $scope.long);
         // third arg passed is proximity, in meters. default to ~30 miles
         queryLocalEvents($scope.lat, $scope.long, 48000);
         $scope.loading = false;
@@ -31,7 +31,8 @@ angular.module('karaoke.home', [])
   }
   // make a map
   function rendermap(lat, long) {
-    $scope.userMap = L.map('map').setView([lat, long], 14); //<-- zoom level, larger is zoomed in
+    // last value passed is zoom level. larger is more zoomed in.
+    $scope.userMap = L.map('map').setView([lat, long], 14);
     L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       subdomains: 'abcd',
