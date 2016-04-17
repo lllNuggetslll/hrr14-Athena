@@ -12,7 +12,6 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
 
       // app code
-      'public/src/app/services/mapFactory.js',
       'public/src/app/services/locationFactory.js',
       'public/src/app/services/authFactory.js',
       'public/src/app/components/navigation/nav.js',
