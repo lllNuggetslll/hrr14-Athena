@@ -5,13 +5,11 @@ describe('navCtrl', function() {
 
   beforeEach(module('karaoke'));
   beforeEach(inject(function($injector) {
-
     $rootScope = $injector.get('$rootScope');
     $location = $injector.get('$location');
     authFactory = $injector.get('authFactory');
     burgerService = $injector.get('burgerService');
     $scope = $rootScope.$new();
-
     var $controller = $injector.get('$controller');
 
     createController = function() {
@@ -22,9 +20,7 @@ describe('navCtrl', function() {
         burgerService: burgerService
       });
     };
-
     createController();
-
   }));
 
 
@@ -55,9 +51,22 @@ describe('navCtrl', function() {
     expect($scope.droppedDown).to.equal(false);
   });
 
-  it('should animate the hamburger icon when dropping down the menu', function() {
+  it('should animate the hamburger icon to X when dropping down the menu', function() {
     var burgerOpen = chai.spy.on(burgerService, 'open');
     $scope.toggleMenu();
     expect(burgerOpen).to.have.been.called();
+  });
+
+  it('should animate the hamburger icon to burger when retracting the menu', function() {
+    var burgerClose = chai.spy.on(burgerService, 'close');
+    $scope.toggleMenu();
+    $scope.toggleMenu();
+    expect(burgerClose).to.have.been.called();
+  });
+
+  it('should call authFactory.logout when the logOut method is invoked', function() {
+    var logout = chai.spy.on(authFactory, 'logout');
+    $scope.logOut();
+    expect(logout).to.have.been.called();
   });
 });
