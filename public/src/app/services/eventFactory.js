@@ -81,7 +81,6 @@ angular.module('karaoke.services')
   var populateEvents = function (data) {
     var eventsArr = [];
     data.forEach(function(e, i, a) {
-      console.log(e);
       var eventObj = {};
       var date = parseTime(e.time);
       eventObj.eventId = e.id;
@@ -95,7 +94,6 @@ angular.module('karaoke.services')
       eventObj.date = date.day;
       eventObj.time = date.time;
       eventsArr.push(eventObj);
-      console.log(eventObj);
     });
     return eventsArr;
   };

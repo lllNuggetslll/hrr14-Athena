@@ -1,13 +1,12 @@
 angular.module('karaoke.home', [])
 
-.controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, mapFactory, $location) {
+.controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, $location) {
 
-  $scope.map;
+  $scope.userMap = null;
   $scope.lat = '';
   $scope.long = '';
   $scope.loading = true;
   $scope.loadingMessage = 'loading events in your area';
-
 
   if (!$rootScope.userLocation) {
     locationFactory.getPosition()
@@ -15,10 +14,10 @@ angular.module('karaoke.home', [])
         $rootScope.userLocation = pos.coords;
         $scope.lat = pos.coords.latitude;
         $scope.long = pos.coords.longitude;
-
-        rendermap($scope.lat, $scope.long); //<--render map with user location as center of view
-        // third arg passed is proximity, in meters
-        queryLocalEvents($scope.lat, $scope.long, 1600);
+        // render map with user location as center of view
+        rendermap($scope.lat, $scope.long);
+        // third arg passed is proximity, in meters. default to ~30 miles
+        queryLocalEvents($scope.lat, $scope.long, 48000);
         $scope.loading = false;
       });
   } else {
@@ -26,21 +25,21 @@ angular.module('karaoke.home', [])
     $scope.long = $rootScope.userLocation.longitude;
 
     // third arg passed is proximity, in meters
-    queryLocalEvents($scope.lat, $scope.long, 1600);
+    queryLocalEvents($scope.lat, $scope.long, 48000);
     rendermap($scope.lat, $scope.long);
     $scope.loading = false;
   }
   // make a map
   function rendermap(lat, long) {
-    var map = L.map('map').setView([lat, long], 15); //<-- zoom level, larger is zoomed in
-    $scope.map = map;
+    // last value passed is zoom level. larger is more zoomed in.
+    $scope.userMap = L.map('map').setView([lat, long], 14);
     L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       subdomains: 'abcd',
       minZoom: 0,
       maxZoom: 20,
       ext: 'png'
-    }).addTo(map);
+    }).addTo($scope.userMap);
   }
 
   function queryLocalEvents(lat, long, proximity) {
@@ -59,13 +58,21 @@ angular.module('karaoke.home', [])
       popupAnchor: [4, -10]
     });
 
-    for (var i = 0; i < events.length; i++) {
-      markers[i] = L.marker([events[i]['lat'], events[i]['long']], { icon: micIcon })
-        .addTo($scope.map)
-        .bindPopup("Hello. I am a popup.")
+    events.forEach(function(event, i) {
+      markers[i] = L.marker([event.lat, event.long], { icon: micIcon })
+        .addTo($scope.userMap)
+        .bindPopup(buildPopup(event))
         .on('click', onClick)
         .on('mouseover', mouseIn);
-      markers[i].eventId = events[i]['id'];
+      markers[i].eventId = event.id;
+    });
+
+    function buildPopup(e) {
+      var date = eventFactory.parseTime(e.time);
+      var popup = '<div><b style="font-size:1.2em">' + e.song_title + '</b> by <b style="font-size:1.2em">' + e.as_sung_by + '</b></div>';
+      popup += '<div>' + date.day + ' <span class="deemphasize">at</span> ' + date.time + '</div>';
+      popup += '<a href="#/event/' + e.id + '">Link to Event</a>';
+      return popup;
     }
 
     function mouseIn() {

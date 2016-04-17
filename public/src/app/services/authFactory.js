@@ -1,4 +1,4 @@
-angular.module('karaoke.services')
+angular.module('karaoke.services', [])
 
 .factory('authFactory', function($http, $location, $window) {
   var login = function(user) {
