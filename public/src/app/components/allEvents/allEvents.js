@@ -6,5 +6,4 @@ angular.module('karaoke.allevents', [])
     .then(function(response) {
       $scope.data.events = eventFactory.populateEvents(response);
     });
-
 });
