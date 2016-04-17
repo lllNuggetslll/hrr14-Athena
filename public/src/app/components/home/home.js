@@ -1,6 +1,6 @@
 angular.module('karaoke.home', [])
 
-.controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, mapFactory) {
+.controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, mapFactory, $location) {
 
   $scope.map;
   $scope.lat = '';
@@ -46,13 +46,11 @@ angular.module('karaoke.home', [])
   function queryLocalEvents(lat, long, proximity) {
     eventFactory.getInArea(lat, long, proximity)
       .then(function(events) {
-        //console.log(events);
         populateMap(events);
       });
   }
 
   function populateMap(events) {
-    //console.log(events)
     var markers = [];
     var locIcon = L.icon({
       iconUrl: 'src/assets/leaflet/images/marker-icon.png',
@@ -60,16 +58,17 @@ angular.module('karaoke.home', [])
     });
 
     for (var i = 0; i < events.length; i++) {
-      markers[i] = L.marker([events[i]['lat'], events[i]['long']], { icon: locIcon }, { eventId: events[i]['id'] })
+      markers[i] = L.marker([events[i]['lat'], events[i]['long']], { icon: locIcon })
         .addTo($scope.map)
         .on('click', onClick);
+      markers[i].eventId = events[i]['id']
     }
-    console.log(markers)
 
     function onClick(e) {
-      //take user to event page
-      console.log('click!')
-    }
+      var newPath = '/event/' + this.eventId;
 
+      $location.path(newPath);
+      $scope.$apply();
+    }
   }
 });
