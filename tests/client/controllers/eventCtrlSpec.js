@@ -13,7 +13,7 @@ describe('eventCtrl', function() {
     $scope = $rootScope.$new();
     var $controller = $injector.get('$controller');
 
-    eventFactory.eventId = 10;
+    eventFactory.eventId = 999;
 
     createController = function() {
       return $controller('eventCtrl', {
@@ -45,13 +45,40 @@ describe('eventCtrl', function() {
     var getOne = chai.spy.on(eventFactory, 'getOne');
     setTimeout(function() {
       expect(getOne).to.have.been.called();
-    }, 500);
+    }, 1000);
   });
 
   it('should call getOne with the eventId specified in the $stateParams', function() {
     var getOne = chai.spy.on(eventFactory, 'getOne');
     setTimeout(function() {
-      expect(getOne).to.have.been.called.with(10);
-    }, 500);
+      expect(getOne).to.have.been.called.with(999);
+    }, 1000);
+  });
+
+  it('should call trustAsResourceUrl after getting response back from eventFactory', function() {
+    var trustAsResourceUrl = chai.spy.on($sce, 'trustAsResourceUrl');
+    setTimeout(function() {
+      expect(trustAsResourceUrl).to.have.been.called();
+    }, 2000);
+  });
+
+  it('should render a map after getting response back from eventFactory', function() {
+    var renderMap = chai.spy.on(mapService, 'renderMap');
+    setTimeout(function() {
+      expect(renderMap).to.have.been.called();
+    }, 2000);
+  });
+
+  it('should add an icon to the map after getting response back from eventFactory', function() {
+    var addIcon = chai.spy.on(mapService, 'addIcon');
+    setTimeout(function() {
+      expect(addIcon).to.have.been.called();
+    }, 2000);
+  });
+
+  it('should set loading to false after getting response back from eventFactory', function() {
+    setTimeout(function() {
+      expect($scope.loading).to.equal(false);
+    }, 2000);
   });
 });
