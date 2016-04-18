@@ -1,4 +1,4 @@
-<div class="allevents-wrap">
+<div class="allevents-wrap loading-{{ loading }}">
   <input type="text" ng-model="search" placeholder="Filter Events"></input>
   <div ng-repeat="event in data.events | filter:search | orderBy: 'fullTime'">
     <a ng-href="#/event/{{ event.eventId }}" class="event-list-wrapper">
@@ -10,3 +10,5 @@
     </a> 
   </div>
 </div>
+
+<karaoke-loader ng-if="loading"></karaoke-loader>
