@@ -69,7 +69,7 @@ grunt test
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/hrr14-Athena/hrr14-Athena/issues)
 
 
 ## Contributing
