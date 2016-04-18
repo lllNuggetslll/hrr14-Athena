@@ -1,8 +1,6 @@
 angular.module('karaoke.home', [])
 
 .controller('homeCtrl', function($scope, $rootScope, locationFactory, eventFactory, mapService, $location) {
-
-  $scope.map = null;
   $scope.lat = '';
   $scope.long = '';
   $scope.loading = true;
