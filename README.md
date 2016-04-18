@@ -1,6 +1,6 @@
-# Pair-aoke
+# Pairaoke
 
-> Find out where your friends or enemies are planning to show their vocal chops. Show up and either provide some harmonization or devastate them with your superior vocal acrobatics. Sign in to create new Pair-aoke collabo or battle-style pop-ups.
+> Find out where your friends or enemies are planning to show their vocal chops. Show up and either provide some harmonization or devastate them with your superior vocal acrobatics. Sign in to create new Pairaoke collabo or battle-style pop-up karaoke events.
 
 ## Team
 
@@ -20,33 +20,52 @@
 
 ## Usage
 
-> Some usage instructions
+View events in your local area. Signup or login to add an event.
 
-## Requirements
+## Tech Stack
 
-- Node 0.10.x
+- Node/Express
+- Angular
+- Postgres/PostGIS
+- Karma/Mocha/Chai
 - Grunt
 
 ## Development
 
 From within the root directory:
-
 ```sh
 npm install
 bower install
 ```
 
-To do development work:
+#### To develop locally:
+Must have Postgres installed and running
+```sh
+createdb karaoke
+psql karaoke
+```
+Add the PostGIS extension to your Postgres database instance
+```sh
+karaoke=# CREATE EXTENSION postgis;
+```
+Run grunt to build and watch the dev files
 ```sh
 grunt
 ```
+Run node to start the server
+```sh
+node index.js
+```
 
-To build:
+#### To build for production:
 ```sh
 grunt build
 ```
 
-### Working 
+#### To test:
+```sh
+grunt test
+``` 
 
 ### Roadmap
 
