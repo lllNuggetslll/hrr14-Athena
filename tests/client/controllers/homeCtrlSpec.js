@@ -48,14 +48,14 @@ describe('homeCtrl', function() {
       setTimeout(function() {
         expect($scope.lat).to.equal(42);
         expect($scope.long).to.equal(-70);
-      }, 100);
+      }, 500);
     });
 
     it('should not call getPosition if $rootScope.userLocation exists', function() {
       var getPosition = chai.spy.on(locationFactory, 'getPosition');
       setTimeout(function() {
         expect(getPosition).to.not.have.been.called.once;
-      }, 100);
+      }, 500);
     });
 
     it('should call renderMap once the location has been established', function() {
@@ -88,7 +88,7 @@ describe('homeCtrl', function() {
       var getPosition = chai.spy.on(locationFactory, 'getPosition');
       setTimeout(function() {
         expect(getPosition).to.have.been.called();
-      }, 100);
+      }, 500);
     });
   });
 });
