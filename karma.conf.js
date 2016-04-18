@@ -31,10 +31,11 @@ module.exports = function(config) {
 
       // ADD SPEC FILES HERE
       'tests/client/stateSpec.js',
+      'tests/client/services/locationFactorySpec.js',
       'tests/client/controllers/navCtrlSpec.js',
-      'tests/client/controllers/homeCtrlSpec.js',
       'tests/client/controllers/authCtrlSpec.js',
-      'tests/client/services/locationFactorySpec.js'
+      'tests/client/controllers/eventCtrlSpec.js',
+      'tests/client/controllers/homeCtrlSpec.js'
     ],
 
     reporters: ['nyan', 'unicorn'],
