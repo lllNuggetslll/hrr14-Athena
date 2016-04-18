@@ -1,6 +1,4 @@
 <!-- MAIN HTML FILE -->
-<!-- to be compiled into ../ -->
-<!-- one version for dev, one for dist -->
 <!DOCTYPE html>
 <html ng-app="karaoke">
 <head>
@@ -31,13 +29,13 @@
       </div>
     </div>
   </header>
-
   <main>
     <div ui-view></div>
   </main>
 
   <script src="dist/js/libs.min.js"></script>
   <!--(if target dev)><!-->
+  <!-- local dev files -->
   <script src="src/app/services/authFactory.js"></script>
   <script src="src/app/services/locationFactory.js"></script>
   <script src="src/app/services/eventFactory.js"></script>
@@ -52,7 +50,6 @@
   <script src="src/app/components/allevents/allevents.js"></script>
   <script src="src/app/app.js"></script>
   <!--<!(endif)-->
-
   <!--(if target dist)><!-->
   <script src="dist/js/app.min.js"></script>
   <!--<!(endif)-->
