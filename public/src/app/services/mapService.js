@@ -59,9 +59,27 @@ angular.module('karaoke.services')
     }
   };
 
+  var eventMapClickHandler = function(e) {
+    var coords = e.latlng;
+    var micIcon = L.icon({
+      iconUrl: 'src/assets/images/mic.svg',
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+    // if a marker has been placed previously, remove it
+    if (this.marker) {
+      this.map.removeLayer(this.marker);
+    }
+    this.marker = L.marker([coords.lat, coords.lng], { icon: micIcon });
+    // add the coords used for the marker to the event object
+    this.event.location = { lat : coords.lat, long : coords.lng };
+    this.marker.addTo(this.map);
+  };
+
   return {
     renderMap: renderMap,
     addIcon: addIcon,
-    populateMap: populateMap
+    populateMap: populateMap,
+    eventMapClickHandler: eventMapClickHandler
   };
 });

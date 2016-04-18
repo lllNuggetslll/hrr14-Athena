@@ -35,24 +35,8 @@ angular.module('karaoke.addevent', [])
 
   function addMap() {
     mapService.renderMap($scope, $scope.lat, $scope.long, 15, 0, 20, 'create-event_map');
-    $scope.map.on('click', mapClickHandler.bind($scope.map));
+    $scope.map.on('click', mapService.eventMapClickHandler.bind($scope));
     $scope.loading = false;
   }
 
-  function mapClickHandler(e) {
-    var coords = e.latlng;
-    var micIcon = L.icon({
-      iconUrl: 'src/assets/images/mic.svg',
-      iconSize: [26, 26],
-      iconAnchor: [13, 13]
-    });
-    // if a marker has been placed previously, remove it
-    if ($scope.marker) {
-      this.removeLayer($scope.marker);
-    }
-    $scope.marker = L.marker([coords.lat, coords.lng], { icon: micIcon });
-    // add the coords used for the marker to the event object
-    $scope.event.location = { lat : coords.lat, long : coords.lng };
-    $scope.marker.addTo(this);
-  }
 });
