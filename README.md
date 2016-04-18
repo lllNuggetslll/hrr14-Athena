@@ -10,13 +10,15 @@
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+1. [Usage](#usage)
+2. [Tech Stack](#tech-stack)
+3. [Development](#development)
+    1. [Local Development](#to-develop-locally)
+    2. [Building for Production](#to-build-for-production)
+    3. [Testing](#to-test)
+4. [Team](#team)
+5. [Issues](#roadmap)
+6. [Contributing](#contributing)
 
 ## Usage
 
