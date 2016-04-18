@@ -8,6 +8,8 @@ angular.module('karaoke.event', [])
   $scope.date = '';
   $scope.time = '';
   $scope.type = '';
+  $scope.loading = true;
+  $scope.loadingMessage = 'retrieving event information';
 
   eventFactory.getOne($stateParams.eventID)
   .then(function(response) {
@@ -21,6 +23,7 @@ angular.module('karaoke.event', [])
     $scope.video = $sce.trustAsResourceUrl('http://www.youtube.com/embed?listType=search&list=' + response.as_sung_by + ' ' + response.song_title);
     mapService.renderMap($scope, response.lat, response.long, 15, 0, 20, 'event_map');
     mapService.addIcon(response.lat, response.long, $scope.map);
+    $scope.loading = false;
   });
 
 });

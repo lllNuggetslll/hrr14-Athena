@@ -1,4 +1,4 @@
-<div class="eventdetail-wrap">
+<div class="eventdetail-wrap loading-{{ loading }}">
   <h3 class="eventdetail-type" ng-if="type == 'battle'">Better come to play! We gotta battle on our hands!</h3>
   <h3 class="eventdetail-type" ng-if="type == 'collabo'">A harmonious joining of voices. This event is a collabo.</h3>
   <h3>Event Host: {{ creator }}</h3>
@@ -14,3 +14,5 @@
     </div>
   </div>
 </div>
+
+<karaoke-loader ng-if="loading"></karaoke-loader>
