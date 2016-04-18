@@ -4,7 +4,8 @@
   "description": "karaoke with maps",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "postinstall": "bower install && grunt build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
     "bookshelf": "^0.9.4",
+    "bower": "^1.7.9",
     "express": "^4.13.4",
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.4",
