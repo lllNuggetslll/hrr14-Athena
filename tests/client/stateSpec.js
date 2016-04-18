@@ -43,6 +43,13 @@ describe('State routing', function () {
     expect($state.get('addevent').controller).to.equal('addEventCtrl');
   });
 
+  it('Should have an "allevents" state with a url, template, and controller', function () {
+    expect($state.get('allevents')).to.be.defined;
+    expect($state.get('allevents').url).to.equal('/allevents');
+    expect($state.get('allevents').templateUrl).to.equal('src/app/components/allevents/allevents.html');
+    expect($state.get('allevents').controller).to.equal('allEventsCtrl');
+  });
+
   it('Should have authentication protection on the "addevent" state', function () {
     expect($state.get('addevent').authenticate).to.equal(true);
   });

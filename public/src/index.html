@@ -1,10 +1,8 @@
 <!-- MAIN HTML FILE -->
-<!-- to be compiled into ../ -->
-<!-- one version for dev, one for dist -->
 <!DOCTYPE html>
 <html ng-app="karaoke">
 <head>
-  <title></title>
+  <title>Pairaoke</title>
   <link rel="stylesheet" type="text/css" href="dist/styles/style.css">
 </head>
 <body>
@@ -20,7 +18,7 @@
         </ul>
       </nav>
       <div class="main-title">
-        <h1><a href="#/">KARAOKE APP</a></h1>
+        <h1><a href="#/">PAIRAOKE</a></h1>
       </div>
       <div ng-click="toggleMenu()" class="menu-trigger">
         <svg viewBox="0 0 36 26">
@@ -31,16 +29,18 @@
       </div>
     </div>
   </header>
-
   <main>
     <div ui-view></div>
   </main>
 
   <script src="dist/js/libs.min.js"></script>
   <!--(if target dev)><!-->
+  <!-- local dev files -->
   <script src="src/app/services/authFactory.js"></script>
   <script src="src/app/services/locationFactory.js"></script>
   <script src="src/app/services/eventFactory.js"></script>
+  <script src="src/app/services/burgerService.js"></script>
+  <script src="src/app/services/mapService.js"></script>
   <script src="src/app/directives/loader/loader.js"></script>
   <script src="src/app/components/navigation/nav.js"></script>
   <script src="src/app/components/home/home.js"></script>
@@ -50,7 +50,6 @@
   <script src="src/app/components/allevents/allevents.js"></script>
   <script src="src/app/app.js"></script>
   <!--<!(endif)-->
-
   <!--(if target dist)><!-->
   <script src="dist/js/app.min.js"></script>
   <!--<!(endif)-->

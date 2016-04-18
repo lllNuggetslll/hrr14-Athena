@@ -3,7 +3,7 @@ module.exports = function(config) {
 
     basePath: './',
 
-    frameworks: ['mocha', 'chai', 'sinon'],
+    frameworks: ['mocha', 'chai-spies', 'chai', 'sinon'],
 
     files: [
       // source files
@@ -18,6 +18,8 @@ module.exports = function(config) {
       'public/src/app/services/authFactory.js',
       'public/src/app/services/locationFactory.js',
       'public/src/app/services/eventFactory.js',
+      'public/src/app/services/burgerService.js',
+      'public/src/app/services/mapService.js',
       'public/src/app/directives/loader/loader.js',
       'public/src/app/components/navigation/nav.js',
       'public/src/app/components/home/home.js',
@@ -29,9 +31,10 @@ module.exports = function(config) {
 
       // ADD SPEC FILES HERE
       'tests/client/stateSpec.js',
-      'tests/client/locationFactorySpec.js',
-      'tests/client/navCtrlSpec.js',
-      'tests/client/authCtrlSpec.js'
+      'tests/client/controllers/navCtrlSpec.js',
+      'tests/client/controllers/homeCtrlSpec.js',
+      'tests/client/controllers/authCtrlSpec.js',
+      'tests/client/services/locationFactorySpec.js'
     ],
 
     reporters: ['nyan', 'unicorn'],
